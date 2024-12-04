@@ -1,0 +1,36 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm" onsubmit="return validateLogin()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit" class="btn-login">Login</button>
+    </form>
+    <div class="error" id="error-message"></div>
+</div>
+
+<script>
+    function validateLogin() {
+        // Menangkap nilai input dari form
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+
+        // Validasi login sederhana
+        const validUsername = "admin";
+        const validPassword = "12345";
+
+        // Mengecek apakah input cocok dengan username dan password yang benar
+        if (username === validUsername && password === validPassword) {
+            alert("Login Berhasil!");
+            return true; // Login sukses
+        } else {
+            errorMessage.textContent = "Username atau password salah!";
+            return false; // Login gagal
+
+
+    
+        }
+    }
+</script>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-In</title>
+    <link rel="stylesheet" href="style s.css" href="sign.js">
+</head>
+<body>
+        <div class="main">
+            <div class="container">
+                <img src="background Logo_seven-removebg-preview.png" width="50" height="100">
+                    <h1>SevenEacher</h1>
+                        <div class="navbar">
+                            <div class="menu" id="navMenu">
+                                 <ul>
+                                     <li><a href="beranda.html">Beranda</a></li>
+                                 </ul>
+                            </div>
+                        </div>
+                <div class="search">
+                     <input class="srch" type="search" name="" placeholder="Apa Yang Kamu Cari">
+                     <a href="#"> <button class="btn">Search</button></a>
+                </div> 
+                <div class="nav-button">
+                    <button class="btn-sign" id="loginBtn" onclick="login()">Sign In</button>
+                    <button class="btn-sign" id="registerBtn" onclick="register()">Sign Up</button>
+                </div>
+                <div class="nav-menu-btn">
+                    <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+                </div>
+            </div> 
+                
+        </div>
+
+<!-------------------------------Form Box------------------------------------------------>
+<div class="form-box">
+
+     <!------------------Login Form-------------------------------------------->
+    <div class="login-container" id="login">
+           
+            <div class="top">
+                <span>  Belum memiliki akun? <a href="#" onclick="register()">Sign Up</a></span>
+                <header>Login</header>
+            </div>
+        
+        <form id="loginForm" onsubmit="return validateLogin()">
+            <div class="input-box">
+                <input type="text" id="username" name="username" class="input-field" placeholder="Nama pengguna atau Email" required>
+                <i class="bx bx-user"></i>
+            </div>
+            <br>
+            <div class="input-box">
+                <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <br>
+            <div class="input-box">
+                 <button type="submit" class="btn-masuk">Masuk</button>
+            </div>
+        </form>
+            <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="login-check">
+                        <label for="login-check"> Ingat Aku</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#"> Lupa Password?</a></label>
+                    </div>
+            </div>
+        <div class="error" id="error-message"></div>
+    </div>
+        <!------------------Registration Form-------------------------------------------->
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>Sudah memiliki akun? <a href="#" onclick="login()">Login</a></span>
+                <header>Sign Up</header>
+            </div>
+            <form id="registerform" onsubmit="return validateRegister()">
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" id="inputName" class="input-field" placeholder="Nama depan" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="inputName" class="input-field" placeholder="Nama belakang" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                </div>
+                <br/>
+                <div class="input-box">
+                    <input type="text" id="email" name="email" class="input-field" placeholder="Email" required>
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <br/>
+                <div class="input-box">
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <br>
+                <div class="input-box">
+                   <input type="submit" class="btn-masuk" value="Daftar">
+                </div>
+                <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="register-check">
+                            <label for="register-check"> Ingat Aku</label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Syarat & Ketentuan</a></label>
+                        </div>
+                </div>
+                <div class="warning" id="warning-message"></div>
+            </form>
+        </div>
+</div>
+<!--------------------respon js--------------------->
+<script>
+    function myMenuFunction(){
+        var i = document.getElementById("navMenu")
+
+        if(i.className === "menu"){
+            i.className += "responsive";
+        } else {
+            i.className = "menu";
+        }
+    }
+</script>
+<!------------------------daftar js------------------------>
+<script>
+    function validateRegister(){
+        const inputName = document.getElementById('inputName');
+        const email = document . getElementById('email');
+        const password = document . getElementById('password');
+        const warning = document . getElementById('warning-message')
+
+       //ambil nilai dari input
+       const account = email;
+       const verifPassword = password;
+       
+       if(email === account && password === verifPassword){
+        location.href = "beranda after sign.html";
+        return false; //login jadi
+
+       } else{ warning.textContent = "Password anda salah";
+            textContent.color = "white";
+        //login gajadi
+         }
+    } 
+</script>
+<!---------------------login js--------------------------------->
+<script>
+    function validateLogin() {
+        // nilai input dari form
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+ 
+        // Validasi login simpel
+        const validUsername = "admin";
+        const validPassword = "1234";
+
+        // ngecek input sesuai ngga sama username dan password yang benar
+        if (username === validUsername && password === validPassword ) {
+            window.location.href = "beranda after sign.html";
+            return false
+           
+            // Login jadi
+        } else {
+            errorMessage.textContent = "Username atau password salah!";
+            return false; // Login gajadi   
+        }
+    }
+</script>
+<!----------------------letak js------------------->
+<script>
+    
+    var a = document.getElementById("loginBtn")
+    var b = document.getElementById("registerBtn")
+    var x = document.getElementById("login")
+    var y = document.getElementById("register")
+
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className += " white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0; 
+    }
+
+    function register() {
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className += " white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1; 
+    }
+    
+</script>
+</body>
+</html>

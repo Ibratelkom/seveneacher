@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran Berhasil</title>
+    <link rel="stylesheet" href="style pembayaran berhasil.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pembayaran Anda Berhasil!</h1>
+        <div class="success-message">
+            <p>Terima kasih, pembayaran Anda telah berhasil diproses.</p>
+            <p>Berikut adalah ringkasan pembayaran Anda:</p>
+            <div id="summaryText"></div>
+        </div>
+        <br>
+        <a href="beranda after sign.html"><button onclick="goHome()">Kembali ke Beranda</button></a>
+    </div>
+
+    <script>
+        // Mengambil data dari localStorage
+        const summaryText = localStorage.getItem('paymentSummary');
+        document.getElementById('summaryText').innerHTML = summaryText;
+
+        // Fungsi untuk kembali ke beranda
+        function goHome() {
+            window.location.href = 'beranda ater sign.html'; // Ganti dengan URL beranda Anda
+        }
+    </script>
+</body>
+</html>

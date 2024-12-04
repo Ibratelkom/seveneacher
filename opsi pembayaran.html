@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tampilan Pembayaran</title>
+    <link rel="stylesheet" href="style opsi pembayaran.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Waktunya bayarr</h1>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="quantity">Jumlah Barang:</label>
+                <input type="number" id="quantity" min="1" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="price">Harga per Barang:</label>
+                <input type="number" id="price" min="0" required>
+            </div>
+            <br>
+            <button type="button" id="calculateBtn">Hitung</button>
+        </form>
+        <div class="result">
+            <h2>Total Harga: <span id="totalPrice">0</span></h2>
+        </div>
+        <div class="next">
+            <a href="pembayaran berhasil.html"><button type="button">Bayar</button></a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+    const quantity = document.getElementById('quantity').value;
+    const price = document.getElementById('price').value;
+    
+    // Validasi input
+    if (quantity <= 0 || price < 0) {
+        alert('Kolom diatas tidak boleh kosong.');
+        return;
+    }
+
+    // Hitung total harga
+    const totalPrice = quantity * price;
+    
+    // Tampilkan total harga
+    document.getElementById('totalPrice').innerText = totalPrice;
+});
+    </script>
+</body>
+</html>
